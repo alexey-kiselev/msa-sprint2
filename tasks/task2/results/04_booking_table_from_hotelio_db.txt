@@ -1,0 +1,2 @@
+discount_percent|price|created_at|id|hotel_id|promo_code|user_id
+(0 rows)
