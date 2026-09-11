@@ -1,0 +1,29 @@
+# X-Feature-Enabled: true → subset v2 (ingress).
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: booking-feature-flag
+  namespace: istio-system
+spec:
+  workloadSelector:
+    labels:
+      istio: ingressgateway
+  configPatches:
+    - applyTo: HTTP_ROUTE
+      match:
+        context: GATEWAY
+        routeConfiguration:
+          vhost:
+            name: "*:80"
+      patch:
+        operation: INSERT_FIRST
+        value:
+          name: feature-flag-to-v2
+          match:
+            prefix: "/"
+            headers:
+              - name: x-feature-enabled
+                string_match:
+                  exact: "true"
+          route:
+            cluster: outbound|80|v2|booking-service.default.svc.cluster.local

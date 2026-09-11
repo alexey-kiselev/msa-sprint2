@@ -1,0 +1,34 @@
+check-istio.sh
+▶️ Проверка установки Istio...
+NAME                                   READY   STATUS    RESTARTS   AGE
+istio-egressgateway-78fdf567d6-w24mt   1/1     Running   0          28m
+istio-ingressgateway-c4cf76cc-zf9cg    1/1     Running   0          20m
+istiod-6b4547bb4f-tz4qc                1/1     Running   0          28m
+▶️ Проверка Istio инъекции в default namespace...
+"enabled"
+
+(exit 0)
+
+check-canary.sh
+▶️ Checking canary release (90% v1, 10% v2)...
+pong v2 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v2 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v2 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v2 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v2 / pong v2 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v2 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v2 / pong v2 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v2 / pong v1 / pong v1 / pong v1 / pong v1 / pong v2 / pong v1 / pong v2 / pong v1 / pong v1 / pong v1 / pong v1 / pong v2 / pong v1 / pong v1 / pong v1 / pong v1 / pong v1 / pong v2 /
+(exit 0)
+
+check-fallback.sh
+▶️ Testing fallback route...
+pong v1
+(exit 0)
+
+check-feature-flag.sh
+▶️ Проверка Feature Flag (X-Feature-Enabled: true)...
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+
+  0      0   0      0   0      0      0      0                              0
+100      7 100      7   0      0   1728      0                              0
+100      7 100      7   0      0   1711      0                              0
+100      7 100      7   0      0   1698      0                              0
+pong v2
+(exit 0)
+
+Итог: все проверки завершились с кодом 0

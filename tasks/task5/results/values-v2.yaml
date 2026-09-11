@@ -1,0 +1,43 @@
+replicaCount: 1
+version: v2
+
+image:
+  name: booking-service
+  tag: latest
+  pullPolicy: Never
+
+service:
+  enabled: false
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ENABLE_FEATURE_X: "true"
+
+env:
+  - name: APP_ENV
+    value: canary
+  - name: LOG_LEVEL
+    value: debug
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /ping
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 10
+
+readinessProbe:
+  httpGet:
+    path: /ping
+    port: http
+  initialDelaySeconds: 3
+  periodSeconds: 5
