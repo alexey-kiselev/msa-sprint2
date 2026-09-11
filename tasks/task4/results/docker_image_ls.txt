@@ -1,0 +1,42 @@
+docker image ls
+IMAGE                                                                                                 ID             DISK USAGE   CONTENT SIZE   EXTRA
+alpine:latest                                                                                         28bd5fe8b56d         13MB         3.93MB
+apollo-gateway:dev                                                                                    8b8a194eeace       1.81GB          435MB
+booking-history-service:test                                                                          169303857186        253MB         61.4MB
+booking-service:latest                                                                                6e82bb2e2434       32.5MB         10.4MB
+booking-service:local                                                                                 9ba931d03dd8        310MB         75.5MB
+booking-subgraph:dev                                                                                  f08f97d8fd84       1.68GB          415MB
+confluentinc/cp-kafka:7.2.1                                                                           7494848da233       1.23GB          413MB
+confluentinc/cp-zookeeper:7.2.1                                                                       a09fad082e13       1.23GB          413MB
+eclipse-temurin:17-jdk                                                                                a27c79d44326        687MB          217MB
+fullstorydev/grpcurl:latest                                                                           085e183ca334       39.8MB         9.02MB
+gcr.io/k8s-minikube/kicbase:v0.0.51                                                                   146cd636030e       1.89GB          532MB
+gcr.io/k8s-minikube/kicbase@sha256:4a1c825b61479e6c898851ea66f13c620aaeab6002746e95067fc2c4b38a0b24   4a1c825b6147       1.89GB          532MB    U
+ghcr.io/alexta69/metube:2026.08.16                                                                    b4639459a65b       1.19GB          318MB    U
+ghcr.io/astral-sh/uv:0.8.17                                                                           e4644cb5bd56       70.4MB         21.4MB
+ghcr.io/google/cadvisor:v0.60.5                                                                       763aecf1c32c        107MB         30.7MB
+ghcr.io/kafbat/kafka-ui:v1.5.0                                                                        7cda86a33344        637MB          225MB    U
+golang:1.22-alpine                                                                                    1699c10032ca        349MB         73.5MB
+hotel-subgraph:dev                                                                                    b82e903244b6       1.66GB          411MB
+hotelio-booking-history-service:dev                                                                   33e083d442fd        253MB         61.4MB
+hotelio-booking-service:dev                                                                           6b8c3a50cdd0        310MB         75.5MB
+hotelio-monolith:dev                                                                                  a1053751bb73        826MB          276MB
+hotelio-tester:latest                                                                                 0e02e3230840        142MB         35.1MB
+node:26.7.0-alpine3.24                                                                                aadf416b2cdc        251MB         63.7MB
+postgres:15                                                                                           9b1d34adbce1        633MB          164MB
+postgres:18.6                                                                                         4ef4dbc939d6        650MB          168MB
+python:3.12-bookworm                                                                                  581429e3df12       1.49GB          397MB
+python:3.14-slim                                                                                      cad9a2c87176        191MB         48.6MB
+python:3.14.7-slim-bookworm                                                                           416f0db2a2b5        186MB         47.4MB
+quay.io/prometheuscommunity/postgres-exporter:v0.20.1                                                 ac5ec343104f       36.2MB         11.8MB
+rabbitmq:4.3.5-management-alpine                                                                      a1a5dd841347        274MB         89.5MB    U
+redis:8.10.1-alpine                                                                                   becdda6c7f4b        160MB         39.5MB    U
+task1-monolith:latest                                                                                 2d9c1382f330        803MB          270MB
+task2-booking-history-service:latest                                                                  0607f6343f66        253MB         61.4MB
+task2-booking-service:latest                                                                          24ec3cdfcc92        310MB         75.5MB
+task2-monolith-app:latest                                                                             7aa3f272aa31        803MB          270MB
+task2-monolith:latest                                                                                 4d085a6d82ad        803MB          270MB
+task3-apollo-gateway:latest                                                                           43ae7dcfb2fc       1.81GB          435MB
+task3-booking-subgraph:latest                                                                         cf080344e715       1.68GB          415MB
+task3-hotel-subgraph:latest                                                                           25f796363ad8       1.66GB          411MB
+ubuntu:26.10                                                                                          694b773ee7e0        161MB         45.4MB

@@ -12,14 +12,18 @@ service:
 
 ENABLE_FEATURE_X: "true"
 
-env: []
+env:
+  - name: APP_ENV
+    value: staging
+  - name: LOG_LEVEL
+    value: debug
 
 resources:
   requests:
     cpu: 50m
     memory: 64Mi
   limits:
-    cpu: 200m
+    cpu: 250m
     memory: 128Mi
 
 livenessProbe:
