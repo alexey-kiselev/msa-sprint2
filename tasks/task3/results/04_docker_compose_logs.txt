@@ -1,0 +1,10 @@
+hotel-subgraph-1  | Enabling inline tracing for this subgraph. To disable, use ApolloServerPluginInlineTraceDisabled.
+hotel-subgraph-1  | ✅ Hotel subgraph ready at http://localhost:4002/
+booking-subgraph-1  | Enabling inline tracing for this subgraph. To disable, use ApolloServerPluginInlineTraceDisabled.
+booking-subgraph-1  | ✅ Booking subgraph ready at http://localhost:4001/
+apollo-gateway-1    | The `serviceList` option is deprecated and will be removed in a future version of `@apollo/gateway`. Please migrate to its replacement `IntrospectAndCompose`. More information on `IntrospectAndCompose` can be found in the documentation.
+apollo-gateway-1    | 🚀 Gateway ready at http://localhost:4000/
+booking-subgraph-1  | ACL allow: userid=test-user-2
+booking-subgraph-1  | gRPC ListBookings userId=test-user-2 count=1
+hotel-subgraph-1    | REST GET /api/hotels/test-hotel-1 ok
+booking-subgraph-1  | ACL deny: userid=test-user-3 cannot read bookings of userId=test-user-2

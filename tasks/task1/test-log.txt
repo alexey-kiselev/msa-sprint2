@@ -1,0 +1,81 @@
+sh tasks/task1/app_up_and_test.sh                                                                                                                                                                            1 ↵
+[+] up 2/2
+ ✔ Container hotelio-monolith Running                                                                                                0.0s
+ ✔ Container hotelio-db       Running                                                                                                0.0s
+[+] Building 0.6s (11/11) FINISHED                                                                                                   docker:default
+ => [internal] load build definition from Dockerfile                                                                                 0.0s
+ => => transferring dockerfile: 392B                                                                                                 0.0s
+ => [internal] load metadata for docker.io/library/debian:bullseye-slim                                                              0.4s
+ => [internal] load .dockerignore                                                                                                    0.0s
+ => => transferring context: 2B                                                                                                      0.0s
+ => [1/6] FROM docker.io/library/debian:bullseye-slim@sha256:e5b6442dd2e9684cf5e87d8338b5968f3b348636fc0be6d7850a381e3731a2bd        0.0s
+ => => resolve docker.io/library/debian:bullseye-slim@sha256:e5b6442dd2e9684cf5e87d8338b5968f3b348636fc0be6d7850a381e3731a2bd        0.0s
+ => [internal] load build context                                                                                                    0.0s
+ => => transferring context: 103B                                                                                                    0.0s
+ => CACHED [2/6] WORKDIR /app                                                                                                        0.0s
+ => CACHED [3/6] RUN apt-get update && apt-get install -y     curl     postgresql-client     bash     && rm -rf /var/lib/apt/lists/* 0.0s
+ => CACHED [4/6] COPY wait-for-it.sh /usr/local/bin/wait-for-it                                                                      0.0s
+ => CACHED [5/6] COPY init-fixtures.sql regress.sh ./                                                                                0.0s
+ => CACHED [6/6] RUN chmod +x /usr/local/bin/wait-for-it regress.sh                                                                  0.0s
+ => exporting to image                                                                                                               0.0s
+ => => exporting layers                                                                                                              0.0s
+ => => exporting manifest sha256:885ecc405e80b80786360a95eabb0b463fd6f0029825fe35a10894aad13d1e81                                    0.0s
+ => => exporting config sha256:424223c450f7abbb78ef3d286aa6797e03441b2949179ae639e4b2e732878ba8                                      0.0s
+ => => exporting attestation manifest sha256:68cfc2072460f3684100eb30f40e9cfc3db2ab5cf40707e56ef9f7653924757b                        0.0s
+ => => exporting manifest list sha256:8d61ffa79422cc06a86ce75fc7b284b0358adf5de52b669c377c2bcb36609a62                               0.0s
+ => => naming to docker.io/library/hotelio-tester:latest                                                                             0.0s
+ => => unpacking to docker.io/library/hotelio-tester:latest                                                                          0.0s
+🏁 Регрессионный тест до миграции Hotelio
+🧪 Проверка подключения к БД...
+🧪 Загрузка фикстур...
+DELETE 4
+DELETE 3
+DELETE 12
+DELETE 3
+DELETE 2
+INSERT 0 4
+INSERT 0 3
+INSERT 0 12
+INSERT 0 3
+INSERT 0 2
+🧪 Выполнение HTTP-тестов...
+
+Тесты пользователей...
+✅ Получение test-user-1 по ID работает
+✅ Статус test-user-1: ACTIVE
+✅ test-user-1 в блэклисте
+✅ test-user-1 активен
+✅ test-user-1 не авторизован (в блэклисте)
+✅ test-user-3 — VIP-пользователь
+✅ test-user-2 авторизован
+
+Тесты отелей...
+✅ test-hotel-1 получен по ID
+✅ test-hotel-1 работает
+✅ test-hotel-3 не работает
+✅ test-hotel-2 полностью забронирован
+✅ Поиск отелей в Сеуле работает
+✅ Топ-отели в Сеуле загружены
+
+Тесты ревью...
+✅ Отзывы test-hotel-1 найдены
+✅ test-hotel-1 признан надёжным
+✅ test-hotel-3 НЕ признан надёжным (ожидаемо)
+
+Тесты промокодов...
+✅ Промокод TESTCODE1 найден
+✅ VIP-промо доступен VIP
+✅ VIP-промо недоступен обычному
+✅ Обычный промо доступен
+✅ Истекший промо недоступен
+✅ POST /validate промо прошёл
+
+Тесты бронирования...
+✅ Все бронирования получены
+✅ Бронирования test-user-2 найдены
+✅ Бронирование прошло (без промо)
+✅ Бронирование с промо прошло
+✅ Отклонено: неактивный пользователь
+✅ Отклонено: недоверенный отель
+✅ Отклонено: отель полностью забронирован
+✅ Все HTTP-тесты пройдены!

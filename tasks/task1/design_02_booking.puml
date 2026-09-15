@@ -1,0 +1,21 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+System_Boundary(hotelio, "Hotelio") {
+  Container(gw, "API Gateway", "Spring Boot", "REST API")
+  Container(booking, "Booking", "Java", "Бронирование")
+  ContainerDb(bookingDb, "Booking DB", "PostgreSQL", "Таблица booking")
+  Container(monolith, "Monolith Application", "Spring Boot", "Legacy app exposing REST endpoints for hotel booking")
+}
+
+Person(user, "User", "Interacts with frontend")
+
+Rel(user, gw, "HTTP", "")
+Rel(gw, booking, "Бронирование", "HTTP")
+Rel(gw, monolith, "Запросы к User/Hotel/Promo/Review")
+Rel(booking, gw, "Запросы к монолиту", "HTTP /api/*")
+Rel(booking, bookingDb, "Данные")
+
+@enduml

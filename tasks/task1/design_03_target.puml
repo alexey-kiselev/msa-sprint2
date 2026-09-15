@@ -1,0 +1,49 @@
+@startuml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+System_Boundary(hotelio, "Hotelio") {
+  Container(gw, "API Gateway", "Spring Boot", "REST API")
+
+  Container(booking, "Booking", "Java", "Бронирование")
+  ContainerDb(bookingDb, "Booking DB", "PostgreSQL", "Таблица booking")
+
+  Container(hotel, "Hotel", "Java", "Отели")
+  ContainerDb(hotelDb, "Hotel DB", "PostgreSQL", "Таблица hotel")
+
+  Container(userSvc, "User", "Java", "Пользователи")
+  ContainerDb(userDb, "User DB", "PostgreSQL", "Таблица app_user")
+
+  Container(promo, "Promo", "Java", "Промокоды")
+  ContainerDb(promoDb, "Promo DB", "PostgreSQL", "Таблица promo_code")
+
+  Container(review, "Review", "Java", "Отзывы")
+  ContainerDb(reviewDb, "Review DB", "PostgreSQL", "Таблица review")
+
+  ContainerQueue(kafka, "Kafka", "Message Broker", "События")
+}
+
+Person(user, "User", "Interacts with frontend")
+
+Rel(user, gw, "HTTP", "")
+
+Rel(gw, booking, "Бронирование", "HTTP")
+Rel(gw, hotel, "Отели", "HTTP")
+Rel(gw, userSvc, "Пользователи", "HTTP")
+Rel(gw, promo, "Промокоды", "HTTP")
+Rel(gw, review, "Отзывы", "HTTP")
+
+Rel(booking, kafka, "Pub/Sub")
+Rel(hotel, kafka, "Pub/Sub")
+Rel(userSvc, kafka, "Pub/Sub")
+Rel(promo, kafka, "Pub/Sub")
+Rel(review, kafka, "Pub/Sub")
+
+Rel(booking, bookingDb, "Данные")
+Rel(hotel, hotelDb, "Данные")
+Rel(userSvc, userDb, "Данные")
+Rel(promo, promoDb, "Данные")
+Rel(review, reviewDb, "Данные")
+
+@enduml
